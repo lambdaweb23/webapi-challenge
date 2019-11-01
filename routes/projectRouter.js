@@ -69,4 +69,23 @@ router.delete("/:id", (req, res) => {
         });
 });
 
+// GET all actions
+router.get("/actions/:project_id", (req, res) => {
+    const { project_id } = req.params;
+
+    db.getProjectActions(project_id)
+        .then(actions => {
+            if (!actions.length) {
+                return res.status(404).json({ error: `Action with id ${project_id} does not exist` });
+            }
+            res.status(200).json(actions);
+        })
+        .catch(err => {
+            console.log(err);
+            res
+                .status(500)
+                .json({ error: `The action with id ${project_id} could not be retrieved.` });
+        });
+});
+
 module.exports = router;
