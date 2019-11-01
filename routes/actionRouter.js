@@ -46,4 +46,22 @@ router.put("/:project_id/:id", (req, res) => {
         });
 });
 
+// Delete action
+router.delete("/:project_id/:id", (req, res) => {
+    const { id } = req.params;
+
+    db.remove(id)
+        .then(removed => {
+            if (removed) {
+                res.status(200).json({ message: `Action with id ${id} has been deleted`});
+            } else {
+                res.status(404).json({ error: `Action with id ${id} does not exist` });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Error deleting action" });
+        });
+});
+
 module.exports = router;
