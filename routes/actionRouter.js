@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const db = require('../data/helpers/actionModel');
 
+// Get action by id
+router.get('/:project_id/:id', (req, res) => {
+    const { id } = req.params;
+    db.get(id)
+        .then(action => res.status(200).json(action))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: `The action with id ${id} could not be retrieved` })
+        })
+})
+
 // Add action
 router.post("/:project_id", (req, res) => {
     const { project_id } = req.params;
