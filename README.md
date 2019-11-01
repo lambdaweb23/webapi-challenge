@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Express is a web application framework for Node.js to build web applications and APIs. It handles CRUD operation requests.
+
 - [ ] Describe Middleware?
+
+Middleware is like a bridge applications and data.
 
 - [ ] Describe a Resource?
 
+Data from an API
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+A response status 
+
 - [ ] How can we partition our application into sub-applications?
+
+By using different routers.
 
 ## Project Setup
 
