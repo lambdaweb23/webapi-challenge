@@ -7,7 +7,7 @@ server.use(express.json());
 server.use(Logger);
 
 server.use("/api/projects", projectRouter);
-server.use("/api/projects", actionRouter);
+server.use("/api/projects/actions", actionRouter);
 
 function Logger(req, res, next) {
     console.log(
