@@ -22,6 +22,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
+// Add project
 router.post("/", (req, res) => {
     const { name, description } = req.body;
     if (!name || !description) {
@@ -38,6 +39,7 @@ router.post("/", (req, res) => {
         });
 });
 
+// Update project
 router.put("/:id", (req, res) => {
     const { id } = req.params;
     const { name, description } = req.body;
@@ -52,13 +54,14 @@ router.put("/:id", (req, res) => {
         });
 });
 
+// Delete project
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
 
     db.remove(id)
         .then(removed => {
             if (removed) {
-                res.status(204).end();
+                res.status(200).json({ message: `Project with id ${id} has been deleted`});
             } else {
                 res.status(404).json({ error: `Project with id ${id} does not exist` });
             }
