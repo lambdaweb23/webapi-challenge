@@ -31,4 +31,19 @@ router.post("/:project_id", (req, res) => {
         });
 });
 
+// Update action
+router.put("/:project_id/:id", (req, res) => {
+    const { id } = req.params;
+    const { description, notes } = req.body;
+
+    db.update(id, { description, notes })
+        .then(updated => {
+            res.status(200).json(updated);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Error updating action" });
+        });
+});
+
 module.exports = router;
